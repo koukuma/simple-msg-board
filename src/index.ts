@@ -121,6 +121,7 @@ function newFormPage(values: { title: string; body: string }, errors: string[]):
       : ''
   const body = `
 <h1>新規投稿</h1>
+<p class="muted">投稿は24時間後に自動的に削除されます。投稿後に手動で削除することはできません。</p>
 ${errorHtml}
 <form method="post" action="/messages">
   <label>タイトル（最大${TITLE_MAX}文字）
@@ -167,6 +168,7 @@ app.get('/', async (c) => {
 
   const body = `
 <h1>伝言板</h1>
+<p class="muted">投稿は24時間後に自動的に削除されます。投稿後に手動で削除することはできません。</p>
 <p class="nav"><a href="/new">新しい伝言を書く</a></p>
 ${listHtml}`
   return c.html(page('伝言板', body))
